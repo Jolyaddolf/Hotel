@@ -1,0 +1,85 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        x:Class="HotelBooking.RoomDetailsDialog"
+        Title="RoomDetailsDialog"
+        Width="400" SizeToContent="Height"
+        WindowStartupLocation="CenterOwner">
+
+	<Window.Styles>
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="TextWrapping" Value="Wrap"/>
+		</Style>
+	</Window.Styles>
+
+	<Window.Resources>
+		<SolidColorBrush x:Key="PrimaryBackground" Color="#F5F7FA"/>
+		<SolidColorBrush x:Key="SecondaryBackground" Color="#D3D3D3"/>
+		<SolidColorBrush x:Key="AccentColor" Color="#4A6FA5"/>
+		<SolidColorBrush x:Key="LightAccent" Color="#E1E8F0"/>
+		<SolidColorBrush x:Key="TextColor" Color="#333333"/>
+		<SolidColorBrush x:Key="SuccessColor" Color="#4CAF50"/>
+		<SolidColorBrush x:Key="DangerColor" Color="#F44336"/>
+		<SolidColorBrush x:Key="WarningColor" Color="#FFC107"/>
+		<CornerRadius x:Key="DefaultCornerRadius">8</CornerRadius>
+	</Window.Resources>
+
+	<Border Background="{DynamicResource PrimaryBackground}"
+            CornerRadius="{DynamicResource DefaultCornerRadius}"
+            Margin="10" Padding="15">
+		<StackPanel Spacing="10">
+			<!-- Header -->
+			<Border Background="{DynamicResource AccentColor}"
+                    CornerRadius="{DynamicResource DefaultCornerRadius}"
+                    Padding="10">
+				<TextBlock x:Name="RoomNumberText"
+                          FontSize="16"
+                          FontWeight="Bold"
+                          Foreground="White"
+                          TextAlignment="Center"
+                          TextWrapping="Wrap"/>
+			</Border>
+
+			<!-- Details -->
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" MinWidth="120"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Описание:" FontWeight="Bold"/>
+				<TextBlock x:Name="Detail1Text" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"/>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Тип:" FontWeight="Bold"/>
+				<TextBlock x:Name="Detail2Text" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Вместимость:" FontWeight="Bold"/>
+				<TextBlock x:Name="Detail3Text" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap"/>
+
+				<TextBlock Grid.Row="3" Grid.Column="0" Text="Цена:" FontWeight="Bold"/>
+				<TextBlock x:Name="Detail4Text" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap"/>
+			</Grid>
+
+			<!-- Status -->
+			<Border Background="{DynamicResource LightAccent}"
+                    CornerRadius="{DynamicResource DefaultCornerRadius}"
+                    Padding="10" HorizontalAlignment="Stretch">
+				<TextBlock x:Name="StatusText"
+                          FontWeight="Bold"
+                          TextAlignment="Center"
+                          TextWrapping="Wrap"/>
+			</Border>
+		</StackPanel>
+	</Border>
+</Window>

@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="500" Height="450"
+        x:Class="HotelBooking.CreateBookingDialog"
+        Title="CreateBookingDialog"
+		x:CompileBindings="False">
+	<StackPanel Margin="10" Spacing="10">
+		<TextBlock FontWeight="Bold">Номер:</TextBlock>
+		<ComboBox PlaceholderText="Выберете номер" Name="RoomComboBox">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Grid ColumnDefinitions="100,100,180,150">
+						<TextBlock Grid.Column="0" Text="{Binding Number}" Margin="2"/>
+						<TextBlock Grid.Column="1" Text="{Binding Style}" Margin="2"/>
+						<TextBlock Grid.Column="2" Text="{Binding PricePerNight, StringFormat=Стоимость: {0} руб.}" Margin="2"/>
+						<TextBlock Grid.Column="3" Text="{Binding Capacity, StringFormat=Вместимость: {0}}" Margin="2"/>
+					</Grid>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<TextBlock FontWeight="Bold">Клиент:</TextBlock>
+		<ComboBox Name="ClientComboBox" PlaceholderText="Выберете клиента " DisplayMemberBinding="{Binding FullName}"/>
+		<TextBlock FontWeight="Bold">Дата заезда:</TextBlock>
+		<DatePicker Name="StartDatePicker"/>
+		<TextBlock FontWeight="Bold">Дата выезда:</TextBlock>
+		<DatePicker Name="EndDatePicker"/>
+		<TextBlock Name="TotalCostText" FontWeight="Bold" Text="Общая стоимость: 0 руб."/>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="5">
+			<Button Width="1" Height="1" Name="CalculateButton" Content="Рассчитать стоимость"/>
+			<Button Name="SaveButton" Content="Сохранить"/>
+			<Button Name="GenerateReceiptButton" Content="Сформировать чек" Click="GenerateReceiptButton_Click"/>
+		</StackPanel>
+	</StackPanel>
+</Window>

@@ -1,0 +1,303 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:HotelBooking"
+        mc:Ignorable="d"
+        x:Class="HotelBooking.MainWindow"
+        Title="HotelBooking"
+        x:CompileBindings="False"
+		Height="800" Width="1400"
+		FontFamily="Segeo UI"
+		>
+
+	<Window.Resources>
+		<!-- Ресурсы цветов -->
+		<SolidColorBrush x:Key="DarkPrimary">#252323</SolidColorBrush>
+		<SolidColorBrush x:Key="PrimaryAccent">#70798C</SolidColorBrush>
+		<SolidColorBrush x:Key="LightBackground">#F5F1ED</SolidColorBrush>
+		<SolidColorBrush x:Key="SecondaryBackground">#7a7c7f</SolidColorBrush>
+		<SolidColorBrush x:Key="TextColor">#252323</SolidColorBrush>
+		<SolidColorBrush x:Key="LightText">#F5F1ED</SolidColorBrush>
+		<SolidColorBrush x:Key="AccentColor">#A99985</SolidColorBrush>
+		<SolidColorBrush x:Key="SuccessColor">#00a651</SolidColorBrush>
+		<SolidColorBrush x:Key="DangerColor">#f66b60</SolidColorBrush>
+		<SolidColorBrush x:Key="BlueColor">#0081c8</SolidColorBrush>
+
+		<CornerRadius x:Key="DefaultCornerRadius">6</CornerRadius>
+		<Thickness x:Key="DefaultMargin">8</Thickness>
+		<Thickness x:Key="ListBoxItemPadding">8 6</Thickness>
+	</Window.Resources>
+
+	<Window.Styles>
+		<!-- Оставляем только базовые стили -->
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+			<Setter Property="FontSize" Value="14"/>
+		</Style>
+
+		<Style Selector="TextBlock.header">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryAccent}"/>
+			<Setter Property="Margin" Value="0 0 0 10"/>
+		</Style>
+
+		<!-- Стили кнопок оставляем -->
+		<Style Selector="Button">
+			<Setter Property="Background" Value="{DynamicResource PrimaryAccent}"/>
+			<Setter Property="Foreground" Value="{DynamicResource LightText}"/>
+			<Setter Property="Padding" Value="12 6"/>
+			<Setter Property="CornerRadius" Value="{DynamicResource DefaultCornerRadius}"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+
+		<Style Selector="Button:pointerover">
+			<Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
+		</Style>
+
+		<Style Selector="Button.success">
+			<Setter Property="Background" Value="{DynamicResource SuccessColor}"/>
+		</Style>
+
+		<Style Selector="Button.danger">
+			<Setter Property="Background" Value="{DynamicResource DangerColor}"/>
+		</Style>
+
+		<!-- Стили списков оставляем -->
+		<Style Selector="ListBox">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+
+		<Style Selector="ListBoxItem">
+			<Setter Property="Padding" Value="{DynamicResource ListBoxItemPadding}"/>
+			<Setter Property="Margin" Value="0 0 0 4"/>
+		</Style>
+
+		<Style Selector="ListBoxItem:selected">
+			<Setter Property="Background" Value="{DynamicResource SecondaryBackground}"/>
+			<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+		</Style>
+	</Window.Styles>
+	<Grid Background="{DynamicResource LightBackground}" Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Верхняя панель поиска -->
+		<Border Grid.Row="0"
+                Background="{DynamicResource SecondaryBackground}"
+                CornerRadius="{DynamicResource DefaultCornerRadius}"
+                Margin="0,0,0,10"
+                Padding="10">
+			<DockPanel>
+				<TextBox Name="SearchBox"
+                         MinWidth="250"
+                         Margin="{DynamicResource DefaultMargin}"
+                         Watermark="Поиск клиента по ФИО или телефону..."
+                         TextChanged="SearchBox_TextChanged"
+						 Background="White"/>
+				<Button Name="HistoryButton"
+                        HorizontalAlignment="Right"
+                        Margin="{DynamicResource DefaultMargin}"
+                        Click="HistoryButton_Click"
+                        Padding="15 5"
+							Background="#0081c8">
+					История бронирования
+				</Button>
+			</DockPanel>
+		</Border>
+
+		<!-- Основная область с тремя списками -->
+		<Grid Grid.Row="1" Margin="0,0,0,10" ColumnDefinitions="*,*,*">
+			<!-- Список клиентов -->
+			<Border Grid.Column="0"
+                    Background="{DynamicResource LightBackground}"
+                    CornerRadius="{DynamicResource DefaultCornerRadius}"
+                    Margin="5"
+                    BorderBrush="{DynamicResource AccentColor}"
+                    BorderThickness="1">
+				<StackPanel>
+					<TextBlock Text="Клиенты" Classes="header"/>
+
+					<!-- Заголовки столбцов -->
+					<Grid ColumnDefinitions="150,100,80,100" Margin="5,0,5,5">
+						<TextBlock Grid.Column="0" Text="ФИО" FontWeight="Bold"/>
+						<TextBlock Grid.Column="1" Text="Телефон" FontWeight="Bold"/>
+						<TextBlock Grid.Column="2" Text="Email" FontWeight="Bold"/>
+						<TextBlock Grid.Column="3" Text="Паспорт" FontWeight="Bold"/>
+					</Grid>
+
+					<ListBox Name="ListClients" DoubleTapped="ListClients_DoubleTapped">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border CornerRadius="{DynamicResource DefaultCornerRadius}">
+									<Grid ColumnDefinitions="120,110,80,100">
+										<TextBlock Grid.Column="0" Text="{Binding FullName}" TextWrapping="Wrap"/>
+										<TextBlock Grid.Column="1" Text="{Binding Phone}"/>
+										<TextBlock Grid.Column="2" Text="{Binding Email}"/>
+										<TextBlock Grid.Column="3" Text="{Binding Passport}"/>
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</Border>
+
+			<!-- Список свободных номеров -->
+			<Border Grid.Column="1"
+                    Background="{DynamicResource LightBackground}"
+                    CornerRadius="{DynamicResource DefaultCornerRadius}"
+                    Margin="5"
+                    BorderBrush="{DynamicResource AccentColor}"
+                    BorderThickness="1">
+				<StackPanel>
+					<TextBlock Text="Свободные номера" Classes="header"/>
+
+					<!-- Заголовки столбцов -->
+					<Grid ColumnDefinitions="100,100,100,100" Margin="5,0,5,5">
+						<TextBlock Grid.Column="0" Text="Номер" FontWeight="Bold"/>
+						<TextBlock Grid.Column="1" Text="Тип" FontWeight="Bold"/>
+						<TextBlock Grid.Column="2" Text="Мест" FontWeight="Bold"/>
+						<TextBlock Grid.Column="3" Text="Цена" FontWeight="Bold"/>
+					</Grid>
+
+					<ListBox Name="ListAvailableRooms" DoubleTapped="ListAvailableRooms_DoubleTapped">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border CornerRadius="{DynamicResource DefaultCornerRadius}">
+									<Grid ColumnDefinitions="100,100,100,100">
+										<TextBlock Grid.Column="0" Text="{Binding Number}"/>
+										<TextBlock Grid.Column="1" Text="{Binding Style}"/>
+										<TextBlock Grid.Column="2" Text="{Binding Capacity}"/>
+										<TextBlock Grid.Column="3" Text="{Binding PricePerNight, StringFormat='{}{0:N2} руб.'}"/>
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</Border>
+
+			<!-- Список занятых номеров -->
+			<Border Grid.Column="2"
+                    Background="{DynamicResource LightBackground}"
+                    CornerRadius="{DynamicResource DefaultCornerRadius}"
+                    Margin="5"
+                    BorderBrush="{DynamicResource AccentColor}"
+                    BorderThickness="1">
+				<StackPanel>
+					<TextBlock Text="Занятые номера" Classes="header"/>
+
+					<!-- Заголовки столбцов -->
+					<Grid ColumnDefinitions="30,120,150,100" Margin="5,0,5,5">
+						<TextBlock Grid.Column="0" Text="№" FontWeight="Bold"/>
+						<TextBlock Grid.Column="1" Text="Выезд" FontWeight="Bold"/>
+						<TextBlock Grid.Column="2" Text="Клиент" FontWeight="Bold"/>
+						<TextBlock Grid.Column="3" Text="Статус" FontWeight="Bold"/>
+					</Grid>
+
+					<ListBox Name="ListBusyRooms"
+                             SelectionChanged="ListBusyRooms_SelectionChanged"
+                             DoubleTapped="ListBusyRooms_DoubleTapped">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border CornerRadius="{DynamicResource DefaultCornerRadius}">
+									<Grid ColumnDefinitions="30,120,150,100">
+										<TextBlock Grid.Column="0" Text="{Binding RoomNumber}"/>
+										<TextBlock Grid.Column="1" Text="{Binding DisplayCheckoutDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+										<TextBlock Grid.Column="2" Text="{Binding ClientName}"/>
+										<TextBlock Grid.Column="3" Text="{Binding Status}"/>
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</Border>
+		</Grid>
+
+		<!-- Нижняя панель управления -->
+		<Border Grid.Row="2"
+        Background="#7a7c7f"
+        CornerRadius="{DynamicResource DefaultCornerRadius}"
+        Padding="10">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="300"/>
+					<ColumnDefinition Width="250"/>
+					<ColumnDefinition Width="310"/>
+				</Grid.ColumnDefinitions>
+
+				<!-- Левая группа кнопок -->
+				<StackPanel Grid.Column="0"
+						   Orientation="Horizontal"
+						   HorizontalAlignment="Left"
+						   VerticalAlignment="Center"
+						   Spacing="10">
+					<Button Name="AddClientButton"
+							Classes="success"
+							Click="AddClientButton_Click"
+							Padding="15 8">
+						Добавить клиента
+					</Button>
+					<Button Name="DeleteClientButton"
+							Classes="danger"
+							Click="DeleteClientButton_Click"
+							Padding="15 8">
+						Удалить клиента
+					</Button>
+				</StackPanel>
+
+				<!-- Центральный комбобокс -->
+				<ComboBox Grid.Column="1"
+						  Name="SortAvailableRooms"
+						  Width="230"
+						  PlaceholderText="Сортировка по стоимости"
+						  Margin="10"
+						  VerticalAlignment="Center"
+						  MaxDropDownHeight="200"
+						  SelectionChanged="SortAvailableRooms_SelectionChanged">
+					<ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
+					<ComboBoxItem>По убыванию стоимости</ComboBoxItem>
+				</ComboBox>
+
+				<!-- Правая группа элементов -->
+				<StackPanel Grid.Column="2"
+						   Orientation="Horizontal"
+						   HorizontalAlignment="Right"
+						   VerticalAlignment="Center"
+						   Spacing="10">
+					<Button Name="CreateBookingButton"
+							Background="#0081c8"
+							Foreground="White"
+							Click="CreateBookingButton_Click"
+							Padding="15 8">
+						Создать бронирование
+					</Button>
+					<Button Name="DeleteBookingButton"
+							Classes="danger"
+							Click="DeleteBookingButton_Click"
+							Padding="15 8">
+						Удалить бронь
+					</Button>
+					<ComboBox Name="SortBusyRooms"
+							  Width="290"
+							  PlaceholderText="Сортировка по дате освобождения"
+							  Margin="10"
+							  VerticalAlignment="Center"
+							  MaxDropDownHeight="200"
+							  SelectionChanged="SortBusyRooms_SelectionChanged">
+						<ComboBoxItem>По дате освобождения</ComboBoxItem>
+						<ComboBoxItem>По ФИО клиента</ComboBoxItem>
+					</ComboBox>
+				</StackPanel>
+			</Grid>
+		</Border>
+	</Grid>
+</Window>
