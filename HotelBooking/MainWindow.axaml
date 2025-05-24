@@ -99,7 +99,7 @@
                          MinWidth="250"
                          Margin="{DynamicResource DefaultMargin}"
                          Watermark="Поиск клиента по ФИО или телефону..."
-                         TextChanged="SearchBox_TextChanged"
+                        
 						 Background="White"/>
 				<Button Name="HistoryButton"
                         HorizontalAlignment="Right"

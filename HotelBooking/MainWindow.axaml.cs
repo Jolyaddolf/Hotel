@@ -6,6 +6,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using HotelBooking.Context;
 using HotelBooking.Models;
 using Microsoft.EntityFrameworkCore;
@@ -31,12 +32,24 @@ namespace HotelBooking
         private ObservableCollection<Client> _clients = new();
         private ObservableCollection<AvailableRoomsToday> _availableRooms = new();
         private ObservableCollection<BusyRoomViewModel> _busyRooms = new();
+        private readonly object _loadClientsLock = new object();
+        private string _lastSearchText = string.Empty;
 
         public MainWindow()
         {
             _context = new User001Context();
             InitializeComponent();
             LoadDataAsync();
+
+            var searchBox = this.FindControl<TextBox>("SearchBox");
+            if (searchBox == null)
+            {
+                Console.WriteLine("SearchBox is null. Check if the control is correctly defined in MainWindow.axaml with Name=\"SearchBox\".");
+            }
+            else
+            {
+                searchBox.TextChanged += SearchBox_TextChanged;
+            }
         }
 
         private void InitializeComponent()
@@ -61,55 +74,101 @@ namespace HotelBooking
 
         private async Task LoadClients(string searchText = "")
         {
-            _clients.Clear();
-            var query = _context.Clients.AsQueryable();
-            if (!string.IsNullOrEmpty(searchText))
+            lock (_loadClientsLock)
             {
-                query = query.Where(c => c.FullName.Contains(searchText) || c.Phone.Contains(searchText));
+                _lastSearchText = searchText;
             }
-            var clients = await query.ToListAsync();
-            foreach (var client in clients)
+
+            using (var context = new User001Context())
             {
-                _clients.Add(client);
+                var allClients = await context.Clients.ToListAsync();
+                Console.WriteLine($"Clients in database: {allClients.Count}");
+                foreach (var client in allClients)
+                {
+                    Console.WriteLine($"Client in DB: FullName={client.FullName}, Phone={client.Phone}, Passport={client.Passport}");
+                }
+
+                var query = context.Clients.AsQueryable();
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    query = query.Where(c => c.FullName.ToLower().Contains(searchText.ToLower()) ||
+                                          c.Phone.ToLower().Contains(searchText.ToLower()) ||
+                                          c.Passport.ToLower().Contains(searchText.ToLower()));
+                    Console.WriteLine($"Searching for: {searchText}");
+                }
+
+                var clients = await query.ToListAsync();
+
+                lock (_loadClientsLock)
+                {
+                    if (_lastSearchText != searchText)
+                    {
+                        Console.WriteLine($"Skipping outdated search: {searchText}, latest is {_lastSearchText}");
+                        return;
+                    }
+
+                    _clients.Clear();
+                    foreach (var client in clients)
+                    {
+                        _clients.Add(client);
+                    }
+                    Console.WriteLine($"Loaded {_clients.Count} clients after search");
+                    foreach (var client in _clients)
+                    {
+                        Console.WriteLine($"Client in ListClients: FullName={client.FullName}, Phone={client.Phone}, Passport={client.Passport}");
+                    }
+
+                    var listBox = this.FindControl<ListBox>("ListClients");
+                    if (listBox != null)
+                    {
+                        listBox.ItemsSource = null;
+                        listBox.ItemsSource = _clients;
+                    }
+                }
             }
-            Console.WriteLine($"Loaded {clients.Count} clients");
         }
 
         private async Task LoadAvailableRooms(bool ascending = true)
         {
             _availableRooms.Clear();
-            var query = _context.AvailableRoomsTodays.AsQueryable();
-            query = ascending ? query.OrderBy(r => r.PricePerNight) : query.OrderByDescending(r => r.PricePerNight);
-            var rooms = await query.ToListAsync();
-            foreach (var room in rooms)
+            using (var context = new User001Context())
             {
-                _availableRooms.Add(room);
+                var query = context.AvailableRoomsTodays.AsQueryable();
+                query = ascending ? query.OrderBy(r => r.PricePerNight) : query.OrderByDescending(r => r.PricePerNight);
+                var rooms = await query.ToListAsync();
+                foreach (var room in rooms)
+                {
+                    _availableRooms.Add(room);
+                }
             }
-            Console.WriteLine($"Loaded {rooms.Count} available rooms: {string.Join(", ", rooms.Select(r => r.Number))}");
+            Console.WriteLine($"Loaded {_availableRooms.Count} available rooms: {string.Join(", ", _availableRooms.Select(r => r.Number))}");
         }
 
         private async Task LoadBusyRooms(string sort = "CheckoutDate")
         {
             _busyRooms.Clear();
-            var query = _context.BusyRoomsTodays.AsQueryable();
-            query = sort == "CheckoutDate" ? query.OrderBy(b => b.CheckoutDate) : query.OrderBy(b => b.ClientName);
-            var bookings = await query.ToListAsync();
-            foreach (var booking in bookings)
+            using (var context = new User001Context())
             {
-                var viewModel = new BusyRoomViewModel
+                var query = context.BusyRoomsTodays.AsQueryable();
+                query = sort == "CheckoutDate" ? query.OrderBy(b => b.CheckoutDate) : query.OrderBy(b => b.ClientName);
+                var bookings = await query.ToListAsync();
+                foreach (var booking in bookings)
                 {
-                    BookingId = booking.BookingId,
-                    RoomNumber = booking.RoomNumber,
-                    CheckoutDate = booking.CheckoutDate,
-                    ClientName = booking.ClientName,
-                    Status = booking.Status.ToString(),
-                    DisplayCheckoutDate = booking.CheckoutDate.HasValue
-                        ? booking.CheckoutDate.Value.ToDateTime(TimeOnly.MinValue)
-                        : null
-                };
-                _busyRooms.Add(viewModel);
+                    var viewModel = new BusyRoomViewModel
+                    {
+                        BookingId = booking.BookingId,
+                        RoomNumber = booking.RoomNumber,
+                        CheckoutDate = booking.CheckoutDate,
+                        ClientName = booking.ClientName,
+                        Status = booking.Status.ToString(),
+                        DisplayCheckoutDate = booking.CheckoutDate.HasValue
+                            ? booking.CheckoutDate.Value.ToDateTime(TimeOnly.MinValue)
+                            : null
+                    };
+                    _busyRooms.Add(viewModel);
+                }
             }
-            Console.WriteLine($"Loaded {bookings.Count} busy rooms: {string.Join(", ", bookings.Select(b => $"Room {b.RoomNumber} (Client: {b.ClientName}, Checkout: {b.CheckoutDate})"))}");
+            Console.WriteLine($"Loaded {_busyRooms.Count} busy rooms: {string.Join(", ", _busyRooms.Select(b => $"Room {b.RoomNumber} (Client: {b.ClientName}, Checkout: {b.CheckoutDate})"))}");
         }
 
         private async void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -118,6 +177,7 @@ namespace HotelBooking
             if (searchBox != null)
             {
                 var searchText = searchBox.Text;
+                Console.WriteLine($"Text changed to: {searchText}");
                 await Task.Delay(300);
                 await LoadClients(searchText);
             }
@@ -128,31 +188,78 @@ namespace HotelBooking
             var listBox = sender as ListBox;
             if (listBox.SelectedItem is Client client)
             {
-                var fullNameTextBox = new TextBox { Text = client.FullName, Name = "FullName" };
-                var phoneTextBox = new TextBox { Text = client.Phone, Name = "Phone" };
-                var emailTextBox = new TextBox { Text = client.Email, Name = "Email" };
-                var passportTextBox = new TextBox { Text = client.Passport, Name = "Passport" };
-                var saveButton = new Button { Content = "Сохранить", Name = "SaveButton" };
+                var fullNameTextBox = new TextBox
+                {
+                    Text = client.FullName,
+                    Name = "FullName",
+                    Watermark = "ФИО",
+                    Margin = new Thickness(8),
+                    FontSize = 14
+                };
+                var phoneTextBox = new TextBox
+                {
+                    Text = client.Phone,
+                    Name = "Phone",
+                    Watermark = "Телефон",
+                    Margin = new Thickness(8),
+                    FontSize = 14
+                };
+                var emailTextBox = new TextBox
+                {
+                    Text = client.Email,
+                    Name = "Email",
+                    Watermark = "Email (опционально)",
+                    Margin = new Thickness(8),
+                    FontSize = 14
+                };
+                var passportTextBox = new TextBox
+                {
+                    Text = client.Passport,
+                    Name = "Passport",
+                    Watermark = "Паспорт (опционально)",
+                    Margin = new Thickness(8),
+                    FontSize = 14
+                };
+                var saveButton = new Button
+                {
+                    Content = "Сохранить",
+                    Name = "SaveButton",
+                    Classes = { "success" }
+                };
 
                 var dialog = new Window
                 {
                     Title = "Редактирование клиента",
                     Width = 400,
-                    Height = 300,
-                    Content = new StackPanel
+                    SizeToContent = SizeToContent.Height,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                    Content = new Border
                     {
-                        Margin = new Thickness(10),
-                        Children =
+                        Background = new SolidColorBrush(Color.Parse("#F5F1ED")),
+                        CornerRadius = new CornerRadius(6),
+                        Margin = new Thickness(8),
+                        Padding = new Thickness(8),
+                        Child = new StackPanel
                         {
-                            fullNameTextBox,
-                            phoneTextBox,
-                            emailTextBox,
-                            passportTextBox,
-                            new StackPanel
+                            Spacing = 10,
+                            Children =
                             {
-                                Orientation = Orientation.Horizontal,
-                                HorizontalAlignment = HorizontalAlignment.Right,
-                                Children = { saveButton }
+                                new TextBlock
+                                {
+                                    Text = "Редактирование клиента",
+                                    Classes = { "header" },
+                                    TextAlignment = TextAlignment.Center
+                                },
+                                fullNameTextBox,
+                                phoneTextBox,
+                                emailTextBox,
+                                passportTextBox,
+                                new StackPanel
+                                {
+                                    Orientation = Orientation.Horizontal,
+                                    HorizontalAlignment = HorizontalAlignment.Right,
+                                    Children = { saveButton }
+                                }
                             }
                         }
                     }
@@ -164,13 +271,7 @@ namespace HotelBooking
                     var phone = phoneTextBox.Text;
                     if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(phone))
                     {
-                        await new Window
-                        {
-                            Title = "Ошибка",
-                            Content = new TextBlock { Text = "ФИО и телефон обязательны!", Margin = new Thickness(10) },
-                            Width = 200,
-                            Height = 100
-                        }.ShowDialog(dialog);
+                        await ShowErrorDialog(dialog, "ФИО и телефон обязательны!");
                         return;
                     }
                     client.FullName = fullName;
@@ -180,7 +281,7 @@ namespace HotelBooking
                     _context.Clients.Update(client);
                     await _context.SaveChangesAsync();
                     await LoadClients();
-                    await LoadBusyRooms(); // Обновляем список занятых номеров
+                    await LoadBusyRooms();
                     dialog.Close();
                 };
 
@@ -200,6 +301,7 @@ namespace HotelBooking
             if (listBox.SelectedItem is BusyRoomViewModel busyRoom && busyRoom.BookingId.HasValue)
             {
                 var booking = await _context.Bookings
+                    .Include(b => b.Room)
                     .FirstOrDefaultAsync(b => b.Id == busyRoom.BookingId.Value);
                 if (booking != null)
                 {
@@ -224,13 +326,7 @@ namespace HotelBooking
             var selectedClient = this.FindControl<ListBox>("ListClients").SelectedItem as Client;
             if (selectedClient == null)
             {
-                await new Window
-                {
-                    Title = "Ошибка",
-                    Content = new TextBlock { Text = "Выберите клиента!", Margin = new Thickness(10) },
-                    Width = 200,
-                    Height = 100
-                }.ShowDialog(this);
+                await ShowErrorDialog(this, "Выберите клиента!");
                 return;
             }
 
@@ -251,42 +347,68 @@ namespace HotelBooking
             {
                 Title = $"История бронирования: {selectedClient.FullName}",
                 Width = 600,
-                Height = 400,
-                Content = new ListBox
+                SizeToContent = SizeToContent.Height,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Content = new Border
                 {
-                    ItemsSource = bookings,
-                    ItemTemplate = new FuncDataTemplate<BookingHistoryViewModel>((item, _) =>
+                    Background = new SolidColorBrush(Color.Parse("#F5F1ED")),
+                    CornerRadius = new CornerRadius(6),
+                    Margin = new Thickness(8),
+                    Padding = new Thickness(8),
+                    Child = new StackPanel
                     {
-                        var grid = new Grid
+                        Spacing = 10,
+                        Children =
                         {
-                            ColumnDefinitions = new ColumnDefinitions("100,120,120,100")
-                        };
-                        grid.Children.Add(new TextBlock
-                        {
-                            [Grid.ColumnProperty] = 0,
-                            [!TextBlock.TextProperty] = new Binding("RoomNumber"),
-                            Margin = new Thickness(2)
-                        });
-                        grid.Children.Add(new TextBlock
-                        {
-                            [Grid.ColumnProperty] = 1,
-                            [!TextBlock.TextProperty] = new Binding("StartDate") { StringFormat = "dd.MM.yyyy" },
-                            Margin = new Thickness(2)
-                        });
-                        grid.Children.Add(new TextBlock
-                        {
-                            [Grid.ColumnProperty] = 2,
-                            [!TextBlock.TextProperty] = new Binding("EndDate") { StringFormat = "dd.MM.yyyy" },
-                            Margin = new Thickness(2)
-                        });
-                        grid.Children.Add(new TextBlock
-                        {
-                            [Grid.ColumnProperty] = 3,
-                            [!TextBlock.TextProperty] = new Binding("Status"),
-                            Margin = new Thickness(2)
-                        });
-                        return grid;
-                    }, true)
+                            new TextBlock
+                            {
+                                Text = $"История бронирования: {selectedClient.FullName}",
+                                Classes = { "header" },
+                                TextAlignment = TextAlignment.Center
+                            },
+                            new ListBox
+                            {
+                                ItemsSource = bookings,
+                                ItemTemplate = new FuncDataTemplate<BookingHistoryViewModel>((item, _) =>
+                                {
+                                    var grid = new Grid
+                                    {
+                                        ColumnDefinitions = new ColumnDefinitions("100,120,120,100"),
+                                        Background = Brushes.Transparent,
+                                        Margin = new Thickness(0, 0, 0, 4)
+                                    };
+                                    grid.Children.Add(new TextBlock
+                                    {
+                                        [Grid.ColumnProperty] = 0,
+                                        [!TextBlock.TextProperty] = new Binding("RoomNumber"),
+                                        Margin = new Thickness(2)
+                                    });
+                                    grid.Children.Add(new TextBlock
+                                    {
+                                        [Grid.ColumnProperty] = 1,
+                                        [!TextBlock.TextProperty] = new Binding("StartDate") { StringFormat = "dd.MM.yyyy" },
+                                        Margin = new Thickness(2)
+                                    });
+                                    grid.Children.Add(new TextBlock
+                                    {
+                                        [Grid.ColumnProperty] = 2,
+                                        [!TextBlock.TextProperty] = new Binding("EndDate") { StringFormat = "dd.MM.yyyy" },
+                                        Margin = new Thickness(2)
+                                    });
+                                    grid.Children.Add(new TextBlock
+                                    {
+                                        [Grid.ColumnProperty] = 3,
+                                        [!TextBlock.TextProperty] = new Binding("Status"),
+                                        Margin = new Thickness(2),
+                                        Foreground = item.Status == "Booked" ?
+                                            new SolidColorBrush(Color.Parse("#00a651")) :
+                                            new SolidColorBrush(Color.Parse("#f66b60"))
+                                    });
+                                    return grid;
+                                }, true)
+                            }
+                        }
+                    }
                 }
             };
             await dialog.ShowDialog(this);
@@ -307,13 +429,7 @@ namespace HotelBooking
             var selectedBooking = this.FindControl<ListBox>("ListBusyRooms").SelectedItem as BusyRoomViewModel;
             if (selectedBooking == null || selectedBooking.BookingId == null)
             {
-                await new Window
-                {
-                    Title = "Ошибка",
-                    Content = new TextBlock { Text = "Выберите бронь!", Margin = new Thickness(10) },
-                    Width = 200,
-                    Height = 100
-                }.ShowDialog(this);
+                await ShowErrorDialog(this, "Выберите бронь!");
                 return;
             }
 
@@ -332,27 +448,75 @@ namespace HotelBooking
 
         private async void AddClientButton_Click(object sender, RoutedEventArgs e)
         {
-            var fullNameTextBox = new TextBox { Name = "FullName", Watermark = "ФИО" };
-            var phoneTextBox = new TextBox { Name = "Phone", Watermark = "Телефон" };
-            var emailTextBox = new TextBox { Name = "Email", Watermark = "Email (опционально)" };
-            var passportTextBox = new TextBox { Name = "Passport", Watermark = "Паспорт (опционально)" };
-            var saveButton = new Button { Content = "Сохранить", Name = "SaveClientButton" };
+            var fullNameTextBox = new TextBox
+            {
+                Name = "FullName",
+                Watermark = "ФИО",
+                Margin = new Thickness(8),
+                FontSize = 14
+            };
+            var phoneTextBox = new TextBox
+            {
+                Name = "Phone",
+                Watermark = "Телефон",
+                Margin = new Thickness(8),
+                FontSize = 14
+            };
+            var emailTextBox = new TextBox
+            {
+                Name = "Email",
+                Watermark = "Email (опционально)",
+                Margin = new Thickness(8),
+                FontSize = 14
+            };
+            var passportTextBox = new TextBox
+            {
+                Name = "Passport",
+                Watermark = "Паспорт (опционально)",
+                Margin = new Thickness(8),
+                FontSize = 14
+            };
+            var saveButton = new Button
+            {
+                Content = "Сохранить",
+                Name = "SaveClientButton",
+                Classes = { "success" }
+            };
 
             var dialog = new Window
             {
                 Title = "Добавить клиента",
                 Width = 400,
-                Height = 300,
-                Content = new StackPanel
+                SizeToContent = SizeToContent.Height,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Content = new Border
                 {
-                    Margin = new Thickness(10),
-                    Children =
+                    Background = new SolidColorBrush(Color.Parse("#F5F1ED")),
+                    CornerRadius = new CornerRadius(6),
+                    Margin = new Thickness(8),
+                    Padding = new Thickness(8),
+                    Child = new StackPanel
                     {
-                        fullNameTextBox,
-                        phoneTextBox,
-                        emailTextBox,
-                        passportTextBox,
-                        saveButton
+                        Spacing = 10,
+                        Children =
+                        {
+                            new TextBlock
+                            {
+                                Text = "Добавить клиента",
+                                Classes = { "header" },
+                                TextAlignment = TextAlignment.Center
+                            },
+                            fullNameTextBox,
+                            phoneTextBox,
+                            emailTextBox,
+                            passportTextBox,
+                            new StackPanel
+                            {
+                                Orientation = Orientation.Horizontal,
+                                HorizontalAlignment = HorizontalAlignment.Right,
+                                Children = { saveButton }
+                            }
+                        }
                     }
                 }
             };
@@ -363,13 +527,7 @@ namespace HotelBooking
                 var phone = phoneTextBox.Text;
                 if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(phone))
                 {
-                    await new Window
-                    {
-                        Title = "Ошибка",
-                        Content = new TextBlock { Text = "ФИО и телефон обязательны!", Margin = new Thickness(10) },
-                        Width = 200,
-                        Height = 100
-                    }.ShowDialog(dialog);
+                    await ShowErrorDialog(dialog, "ФИО и телефон обязательны!");
                     return;
                 }
 
@@ -382,8 +540,9 @@ namespace HotelBooking
                 };
                 _context.Clients.Add(client);
                 await _context.SaveChangesAsync();
+                Console.WriteLine($"Added client to DB: FullName={client.FullName}, Phone={client.Phone}, Passport={client.Passport}");
                 await LoadClients();
-                await LoadBusyRooms(); // Обновляем занятые номера после добавления клиента
+                await LoadBusyRooms();
                 dialog.Close();
             };
 
@@ -395,34 +554,33 @@ namespace HotelBooking
             var selectedClient = this.FindControl<ListBox>("ListClients").SelectedItem as Client;
             if (selectedClient == null)
             {
-                await new Window
-                {
-                    Title = "Ошибка",
-                    Content = new TextBlock { Text = "Выберите клиента!", Margin = new Thickness(10) },
-                    Width = 200,
-                    Height = 100
-                }.ShowDialog(this);
+                await ShowErrorDialog(this, "Выберите клиента!");
                 return;
             }
 
+            // Проверяем наличие активных бронирований
             var activeBookings = await _context.Bookings
                 .CountAsync(b => b.ClientId == selectedClient.Id && b.Status == BookingStatus.Booked);
             if (activeBookings > 0)
             {
-                await new Window
-                {
-                    Title = "Ошибка",
-                    Content = new TextBlock { Text = "У клиента есть активные брони!", Margin = new Thickness(10) },
-                    Width = 200,
-                    Height = 100
-                }.ShowDialog(this);
+                await ShowErrorDialog(this, "У клиента есть активные брони!");
                 return;
             }
 
-            _context.Clients.Remove(selectedClient);
+            // Ищем клиента в базе по Id, чтобы избежать конфликта отслеживания
+            var clientToDelete = await _context.Clients
+                .FirstOrDefaultAsync(c => c.Id == selectedClient.Id);
+            if (clientToDelete == null)
+            {
+                await ShowErrorDialog(this, "Клиент не найден в базе данных!");
+                return;
+            }
+
+            _context.Clients.Remove(clientToDelete);
             await _context.SaveChangesAsync();
+            Console.WriteLine($"Deleted client from DB: FullName={clientToDelete.FullName}, Phone={clientToDelete.Phone}, Passport={clientToDelete.Passport}");
             await LoadClients();
-            await LoadBusyRooms(); // Обновляем занятые номера после удаления клиента
+            await LoadBusyRooms();
         }
 
         private async void SortAvailableRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -443,6 +601,46 @@ namespace HotelBooking
                 var sort = comboBox.SelectedIndex == 0 ? "CheckoutDate" : "ClientName";
                 await LoadBusyRooms(sort);
             }
+        }
+
+        private async Task ShowErrorDialog(Window parent, string message)
+        {
+            var dialog = new Window
+            {
+                Title = "Ошибка",
+                Width = 300,
+                SizeToContent = SizeToContent.Height,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Content = new Border
+                {
+                    Background = new SolidColorBrush(Color.Parse("#F5F1ED")),
+                    CornerRadius = new CornerRadius(6),
+                    Margin = new Thickness(8),
+                    Padding = new Thickness(8),
+                    Child = new StackPanel
+                    {
+                        Spacing = 10,
+                        Children =
+                        {
+                            new TextBlock
+                            {
+                                Text = "Ошибка",
+                                Classes = { "header" },
+                                TextAlignment = TextAlignment.Center,
+                                Foreground = new SolidColorBrush(Color.Parse("#f66b60"))
+                            },
+                            new TextBlock
+                            {
+                                Text = message,
+                                TextAlignment = TextAlignment.Center,
+                                TextWrapping = TextWrapping.Wrap,
+                                FontSize = 14
+                            }
+                        }
+                    }
+                }
+            };
+            await dialog.ShowDialog(parent);
         }
     }
 

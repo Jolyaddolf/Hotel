@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using System;
 
 namespace HotelBooking
@@ -24,6 +25,9 @@ namespace HotelBooking
 
         public override void OnFrameworkInitializationCompleted()
         {
+            // Для Avalonia 11.x используем только это:
+            RequestedThemeVariant = ThemeVariant.Light;
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = new MainWindow();

@@ -46,15 +46,21 @@ namespace HotelBooking
         private void UpdateBusyRoomDetails(BusyRoomViewModel busyRoom, Booking booking)
         {
             _roomNumberText.Text = $"Номер: {busyRoom.RoomNumber}";
-            _detail1Text.Text = busyRoom.ClientName;
-            _detail2Text.Text = booking.StartDate.ToString("dd.MM.yyyy");
-            _detail3Text.Text = busyRoom.CheckoutDate?.ToString("dd.MM.yyyy") ?? "Не указано";
-            _detail4Text.Text = "";
+            _detail1Text.Text = booking.Room?.Description ?? "Нет описания"; // Описание номера
+            _detail2Text.Text = booking.Room?.Style ?? "Не указан"; // Тип (стиль)
+            _detail3Text.Text = $"{booking.Room?.Capacity ?? 0} человек"; // Вместимость
+            _detail4Text.Text = $"{booking.Room?.PricePerNight ?? 0:F2} руб."; // Цена за ночь
 
-            _statusText.Text = $"Статус: {busyRoom.Status}";
-            _statusText.Foreground = busyRoom.Status == "Активен" ?
-                this.FindResource("SuccessColor") as SolidColorBrush :
-                this.FindResource("DangerColor") as SolidColorBrush;
+            // Форматируем статус с переносами
+            var clientInfo = $"Забронировал: {busyRoom.ClientName}";
+            var dateRange = $"Период: {booking.StartDate:dd.MM.yyyy} - {busyRoom.CheckoutDate?.ToString("dd.MM.yyyy") ?? "Не указано"}";
+            var statusInfo = $"Статус: {busyRoom.Status}";
+            _statusText.Text = $"{clientInfo}\n{dateRange}\n{statusInfo}";
+
+            // Цвет статуса (зелёный для "Booked", красный для других)
+            _statusText.Foreground = busyRoom.Status == "Booked" ?
+                new SolidColorBrush(Color.Parse("#00a651")) :
+                new SolidColorBrush(Color.Parse("#f66b60"));
         }
 
         private void UpdateAvailableRoomDetails(AvailableRoomsToday availableRoom)
@@ -65,10 +71,11 @@ namespace HotelBooking
             _detail3Text.Text = $"{availableRoom.Capacity} человек";
             _detail4Text.Text = $"{availableRoom.PricePerNight:F2} руб.";
 
-            _statusText.Text = availableRoom.IsActive == true ? "Активен" : "Неактивен";
-            _statusText.Foreground = availableRoom.IsActive == true ?
-                this.FindResource("SuccessColor") as SolidColorBrush :
-                this.FindResource("DangerColor") as SolidColorBrush;
+            bool isActive = availableRoom.IsActive ?? false;
+            _statusText.Text = $"Статус: {(isActive ? "Активен" : "Неактивен")}";
+            _statusText.Foreground = isActive ?
+                new SolidColorBrush(Color.Parse("#00a651")) :
+                new SolidColorBrush(Color.Parse("#f66b60"));
         }
     }
 }

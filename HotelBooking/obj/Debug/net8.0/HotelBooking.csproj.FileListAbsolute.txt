@@ -406,3 +406,4 @@ C:\Users\Bratyakin\Desktop\HotelBooking\HotelBooking\obj\Debug\net8.0\refint\Hot
 C:\Users\Bratyakin\Desktop\HotelBooking\HotelBooking\obj\Debug\net8.0\HotelBooking.pdb
 C:\Users\Bratyakin\Desktop\HotelBooking\HotelBooking\obj\Debug\net8.0\HotelBooking.genruntimeconfig.cache
 C:\Users\Bratyakin\Desktop\HotelBooking\HotelBooking\obj\Debug\net8.0\ref\HotelBooking.dll
+C:\Users\Bratyakin\Desktop\HotelBooking\HotelBooking\obj\Debug\net8.0\HotelBooking.sourcelink.json
