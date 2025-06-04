@@ -24,6 +24,7 @@ C:\Users\Bratyakin\.nuget\packages\avalonia.win32\11.3.0\lib\net8.0\Avalonia.Win
 C:\Users\Bratyakin\.nuget\packages\avalonia.x11\11.3.0\lib\net8.0\Avalonia.X11.dll
 C:\Users\Bratyakin\.nuget\packages\azure.core\1.38.0\lib\net6.0\Azure.Core.dll
 C:\Users\Bratyakin\.nuget\packages\azure.identity\1.11.4\lib\netstandard2.0\Azure.Identity.dll
+C:\Users\Bratyakin\.nuget\packages\dynamicdata\9.3.2\lib\net8.0\DynamicData.dll
 C:\Users\Bratyakin\.nuget\packages\harfbuzzsharp\7.3.0.3\lib\net6.0\HarfBuzzSharp.dll
 C:\Users\Bratyakin\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Users\Bratyakin\.nuget\packages\microsoft.bcl.asyncinterfaces\7.0.0\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll
@@ -59,7 +60,9 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\mscorl
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\netstandard.dll
 C:\Users\Bratyakin\.nuget\packages\npgsql\9.0.3\lib\net8.0\Npgsql.dll
 C:\Users\Bratyakin\.nuget\packages\npgsql.entityframeworkcore.postgresql\9.0.4\lib\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Bratyakin\.nuget\packages\reactiveui\20.3.1\lib\net8.0\ReactiveUI.dll
 C:\Users\Bratyakin\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
+C:\Users\Bratyakin\.nuget\packages\splat\15.3.1\lib\net8.0\Splat.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.AppContext.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Buffers.dll
 C:\Users\Bratyakin\.nuget\packages\system.clientmodel\1.0.0\lib\net6.0\System.ClientModel.dll
@@ -144,6 +147,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Numerics.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Numerics.Vectors.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.ObjectModel.dll
+C:\Users\Bratyakin\.nuget\packages\system.reactive\6.0.1\lib\net6.0\System.Reactive.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Reflection.DispatchProxy.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Reflection.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Reflection.Emit.dll
@@ -172,6 +176,8 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Runtime.Serialization.Json.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Runtime.Serialization.Primitives.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Runtime.Serialization.Xml.dll
+C:\Users\Bratyakin\.nuget\packages\system.runtime.windowsruntime\4.7.0\ref\netstandard2.0\System.Runtime.WindowsRuntime.dll
+C:\Users\Bratyakin\.nuget\packages\system.runtime.windowsruntime.ui.xaml\4.7.0\ref\netstandard2.0\System.Runtime.WindowsRuntime.UI.Xaml.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Security.AccessControl.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Security.Claims.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.13\ref\net8.0\System.Security.Cryptography.Algorithms.dll

@@ -1,14 +1,15 @@
-using Avalonia;
 using Avalonia.Controls;
+using Avalonia;
 using Avalonia.Markup.Xaml;
-using HotelBooking.Context;
+
 using HotelBooking.Models;
+using HotelBooking.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HotelBooking
 {
@@ -19,11 +20,13 @@ namespace HotelBooking
         private List<AvailableRoomsToday> _rooms;
         private List<Client> _clients;
 
+        // Конструктор без параметров для XAML
         public CreateBookingDialog()
         {
             InitializeComponent();
         }
 
+        // Параметризованный конструктор для логики приложения
         public CreateBookingDialog(User001Context context, Action onBookingCreated) : this()
         {
             _context = context;
@@ -46,14 +49,17 @@ namespace HotelBooking
                 throw new InvalidOperationException("Context is not initialized. Call InitializeContext before showing the dialog.");
             }
 
+            // Загрузка свободных номеров
             _rooms = await _context.AvailableRoomsTodays.OrderBy(r => r.PricePerNight).ToListAsync();
             this.FindControl<ComboBox>("RoomComboBox").ItemsSource = _rooms;
             Console.WriteLine($"Loaded {_rooms.Count} rooms");
 
+            // Загрузка клиентов
             _clients = await _context.Clients.OrderBy(c => c.FullName).ToListAsync();
             this.FindControl<ComboBox>("ClientComboBox").ItemsSource = _clients;
             Console.WriteLine($"Loaded {_clients.Count} clients");
 
+            // Установка дат по умолчанию
             var startDatePicker = this.FindControl<DatePicker>("StartDatePicker");
             startDatePicker.SelectedDate = DateTime.Today;
             Console.WriteLine($"StartDatePicker set to: {startDatePicker.SelectedDate}");
@@ -62,9 +68,11 @@ namespace HotelBooking
             endDatePicker.SelectedDate = DateTime.Today.AddDays(1);
             Console.WriteLine($"EndDatePicker set to: {endDatePicker.SelectedDate}");
 
+            // Обработчики событий
             this.FindControl<Button>("CalculateButton").Click += CalculateButton_Click;
             this.FindControl<Button>("SaveButton").Click += async (s, e) => await SaveButton_Click(s, e);
 
+            // Автоматический расчёт стоимости
             this.FindControl<ComboBox>("RoomComboBox").SelectionChanged += (s, e) => UpdateTotalCost();
             this.FindControl<DatePicker>("StartDatePicker").SelectedDateChanged += (s, e) => UpdateTotalCost();
             this.FindControl<DatePicker>("EndDatePicker").SelectedDateChanged += (s, e) => UpdateTotalCost();
@@ -124,7 +132,6 @@ namespace HotelBooking
                 await ShowErrorDialog("Дата выезда должна быть позже даты заезда!");
                 return;
             }
-
             var booking = new Booking
             {
                 ClientId = client.Id,
@@ -132,7 +139,7 @@ namespace HotelBooking
                 StartDate = DateOnly.FromDateTime(startDate.Value.Date),
                 EndDate = DateOnly.FromDateTime(endDate.Value.Date),
                 CreatedAt = DateTime.UtcNow,
-                Status = BookingStatus.Booked
+                Status = "Booked"
             };
 
             try
@@ -152,50 +159,74 @@ namespace HotelBooking
         {
             await new Window
             {
-                Title = "Сообщение",
+                Title = "Ошибка",
                 Content = new TextBlock { Text = message, Margin = new Thickness(10) },
                 Width = 300,
                 Height = 100
             }.ShowDialog(this);
         }
 
-        private async void GenerateReceiptButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var client = this.FindControl<ComboBox>("ClientComboBox").SelectedItem as Client;
             var room = this.FindControl<ComboBox>("RoomComboBox").SelectedItem as AvailableRoomsToday;
-            var totalCostText = this.FindControl<TextBlock>("TotalCostText").Text;
-            var totalCost = decimal.Parse(totalCostText.Replace("Общая стоимость: ", "").Replace(" руб.", ""));
+            var client = this.FindControl<ComboBox>("ClientComboBox").SelectedItem as Client;
+            var startDate = this.FindControl<DatePicker>("StartDatePicker").SelectedDate;
+            var endDate = this.FindControl<DatePicker>("EndDatePicker").SelectedDate;
 
-            if (client == null || room == null)
+            if (room == null || client == null || !startDate.HasValue || !endDate.HasValue)
             {
-                await ShowErrorDialog("Выберите клиента и номер перед формированием чека!");
+                await ShowErrorDialog("Заполните все поля перед формированием чека!");
                 return;
             }
 
-            // Формирование содержимого чека
-            var receiptContent = $"Чек на бронирование\n" +
-                               $"Дата и время: {DateTime.Now:dd.MM.yyyy HH:mm:ss}\n" +
-                               $"Клиент: {client.FullName}\n" +
-                               $"Номер: {room.Number}\n" +
-                               $"Общая стоимость: {totalCost:F2} руб.";
+            // Расчёт стоимости
+            var nights = (endDate.Value.Date - startDate.Value.Date).Days;
+            var totalCost = room.PricePerNight * nights;
 
             // Путь к рабочему столу
-            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var receiptsFolder = Path.Combine(desktopPath, "Чеки");
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string receiptsFolder = Path.Combine(desktopPath, "Чеки"); // Изменено с "Receipts" на "Чеки"
 
-            // Создание папки "Чеки", если она не существует
-            if (!Directory.Exists(receiptsFolder))
+            // Создание папки, если её нет
+            try
             {
-                Directory.CreateDirectory(receiptsFolder);
+                if (!Directory.Exists(receiptsFolder))
+                {
+                    Directory.CreateDirectory(receiptsFolder);
+                }
+            }
+            catch (Exception ex)
+            {
+                await ShowErrorDialog($"Ошибка при создании папки 'Чеки': {ex.Message}");
+                return;
             }
 
-            // Формирование имени файла и пути
-            var fileName = $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
-            var filePath = Path.Combine(receiptsFolder, fileName);
+            // Генерация имени файла с уникальным идентификатором (например, дата и время)
+            string fileName = $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            string filePath = Path.Combine(receiptsFolder, fileName);
+
+            // Содержимое чека
+            var receiptContent = $"Чек бронирования\n" +
+                                $"--------------------------------\n" +
+                                $"Номер: {room.Number}\n" +
+                                $"Клиент: {client.FullName}\n" +
+                                $"Дата заезда: {startDate.Value:dd.MM.yyyy}\n" +
+                                $"Дата выезда: {endDate.Value:dd.MM.yyyy}\n" +
+                                $"Количество ночей: {nights}\n" +
+                                $"Стоимость за ночь: {room.PricePerNight:F2} руб.\n" +
+                                $"Общая стоимость: {totalCost:F2} руб.\n" +
+                                $"Дата создания: {DateTime.Now:dd.MM.yyyy HH:mm:ss}\n";
 
             // Сохранение файла
-            File.WriteAllText(filePath, receiptContent);
-            await ShowErrorDialog($"Чек сохранён в папку Чеки на рабочем столе: {fileName}");
+            try
+            {
+                await File.WriteAllTextAsync(filePath, receiptContent);
+                await ShowErrorDialog($"Чек успешно сохранён в: {filePath}");
+            }
+            catch (Exception ex)
+            {
+                await ShowErrorDialog($"Ошибка при сохранении чека: {ex.Message}");
+            }
         }
     }
 }

@@ -3,52 +3,72 @@
   "WorkspaceRootPath": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\roomdetailsdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\roomdetailsdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\generatereportdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\generatereportdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\generatereportdialog.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\generatereportdialog.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\createbookingdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\createbookingdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\converters\\isnulltoboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\converters\\isnulltoboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\busyroomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\busyroomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\objecttoboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\objecttoboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\availableroomstoday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\availableroomstoday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\createbookingdialog.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\createbookingdialog.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\busyroomstoday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\busyroomstoday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\context\\user001context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\context\\user001context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\busyroomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\busyroomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\roomdetailsdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\roomdetailsdialog.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\objecttoboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\objecttoboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\models\\availableroomstoday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\models\\availableroomstoday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\hotelbooking.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\hotelbooking.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|c:\\users\\bratyakin\\desktop\\hotelbooking\\hotelbooking\\app.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D1E653C-EFFE-435D-8C5D-A08753DB1318}|HotelBooking\\HotelBooking.csproj|solutionrelative:hotelbooking\\app.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,91 +86,141 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
+              "Title": "BusyRoomViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\BusyRoomViewModel.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\BusyRoomViewModel.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\BusyRoomViewModel.cs",
+              "RelativeToolTip": "HotelBooking\\BusyRoomViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T18:34:32.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "RoomDetailsDialog.axaml.cs",
               "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\RoomDetailsDialog.axaml.cs",
               "RelativeDocumentMoniker": "HotelBooking\\RoomDetailsDialog.axaml.cs",
               "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\RoomDetailsDialog.axaml.cs",
               "RelativeToolTip": "HotelBooking\\RoomDetailsDialog.axaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAEwEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T23:27:34.341Z",
+              "WhenOpened": "2025-06-03T18:35:37.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateBookingDialog.axaml",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\CreateBookingDialog.axaml",
+              "RelativeDocumentMoniker": "HotelBooking\\CreateBookingDialog.axaml",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\CreateBookingDialog.axaml",
+              "RelativeToolTip": "HotelBooking\\CreateBookingDialog.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-03T17:45:39.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\MainWindow.axaml.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\MainWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\MainWindow.axaml.cs",
+              "RelativeToolTip": "HotelBooking\\MainWindow.axaml.cs",
+              "ViewState": "AgIAALwBAAAAAAAAAAAmwNYBAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T17:52:02.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User001Context.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Context\\User001Context.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\Context\\User001Context.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Context\\User001Context.cs",
+              "RelativeToolTip": "HotelBooking\\Context\\User001Context.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAiwFYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T18:10:36.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GenerateReportDialog.axaml",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\GenerateReportDialog.axaml",
+              "RelativeDocumentMoniker": "HotelBooking\\GenerateReportDialog.axaml",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\GenerateReportDialog.axaml",
+              "RelativeToolTip": "HotelBooking\\GenerateReportDialog.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-03T18:35:15.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GenerateReportDialog.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\GenerateReportDialog.axaml.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\GenerateReportDialog.axaml.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\GenerateReportDialog.axaml.cs",
+              "RelativeToolTip": "HotelBooking\\GenerateReportDialog.axaml.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAADwv4IAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T18:15:56.018Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "CreateBookingDialog.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\CreateBookingDialog.axaml.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\CreateBookingDialog.axaml.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\CreateBookingDialog.axaml.cs",
+              "RelativeToolTip": "HotelBooking\\CreateBookingDialog.axaml.cs",
+              "ViewState": "AgIAAMIAAAAAAAAAAADwv+QAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T17:45:43.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BusyRoomsToday.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\BusyRoomsToday.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\Models\\BusyRoomsToday.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\BusyRoomsToday.cs",
+              "RelativeToolTip": "HotelBooking\\Models\\BusyRoomsToday.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T18:11:45.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\Models\\Booking.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Booking.cs",
+              "RelativeToolTip": "HotelBooking\\Models\\Booking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T18:10:55.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "MainWindow.axaml",
               "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\MainWindow.axaml",
               "RelativeDocumentMoniker": "HotelBooking\\MainWindow.axaml",
               "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\MainWindow.axaml",
               "RelativeToolTip": "HotelBooking\\MainWindow.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T14:54:45.59Z"
+              "WhenOpened": "2025-06-03T17:51:59.818Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.axaml.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\MainWindow.axaml.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\MainWindow.axaml.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\MainWindow.axaml.cs",
-              "RelativeToolTip": "HotelBooking\\MainWindow.axaml.cs",
-              "ViewState": "AgIAAFMCAAAAAAAAAAAAwI8CAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T13:23:27.854Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateBookingDialog.axaml.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\CreateBookingDialog.axaml.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\CreateBookingDialog.axaml.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\CreateBookingDialog.axaml.cs",
-              "RelativeToolTip": "HotelBooking\\CreateBookingDialog.axaml.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAowMgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T13:25:14.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Client.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Client.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\Models\\Client.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Client.cs",
-              "RelativeToolTip": "HotelBooking\\Models\\Client.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:29:56.814Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IsNullToBoolConverter.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Converters\\IsNullToBoolConverter.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\Converters\\IsNullToBoolConverter.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Converters\\IsNullToBoolConverter.cs",
-              "RelativeToolTip": "HotelBooking\\Converters\\IsNullToBoolConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:34:52.086Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BusyRoomViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\BusyRoomViewModel.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\BusyRoomViewModel.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\BusyRoomViewModel.cs",
-              "RelativeToolTip": "HotelBooking\\BusyRoomViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T13:22:42.832Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ObjectToBoolConverter.cs",
               "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\ObjectToBoolConverter.cs",
               "RelativeDocumentMoniker": "HotelBooking\\ObjectToBoolConverter.cs",
@@ -158,55 +228,68 @@
               "RelativeToolTip": "HotelBooking\\ObjectToBoolConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:40:34.427Z"
+              "WhenOpened": "2025-06-03T18:35:31.098Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AvailableRoomsToday.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\AvailableRoomsToday.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\Models\\AvailableRoomsToday.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\AvailableRoomsToday.cs",
-              "RelativeToolTip": "HotelBooking\\Models\\AvailableRoomsToday.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Client.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\Models\\Client.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Client.cs",
+              "RelativeToolTip": "HotelBooking\\Models\\Client.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T15:21:00.54Z"
+              "WhenOpened": "2025-06-03T18:28:04.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BusyRoomsToday.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\BusyRoomsToday.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\Models\\BusyRoomsToday.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\BusyRoomsToday.cs",
-              "RelativeToolTip": "HotelBooking\\Models\\BusyRoomsToday.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T13:26:10.918Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Room.cs",
               "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Room.cs",
               "RelativeDocumentMoniker": "HotelBooking\\Models\\Room.cs",
               "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Room.cs",
               "RelativeToolTip": "HotelBooking\\Models\\Room.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T15:20:41.672Z"
+              "WhenOpened": "2025-06-03T18:28:07.685Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Booking.cs",
-              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Booking.cs",
-              "RelativeDocumentMoniker": "HotelBooking\\Models\\Booking.cs",
-              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\Booking.cs",
-              "RelativeToolTip": "HotelBooking\\Models\\Booking.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 14,
+              "Title": "AvailableRoomsToday.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\AvailableRoomsToday.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\Models\\AvailableRoomsToday.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\Models\\AvailableRoomsToday.cs",
+              "RelativeToolTip": "HotelBooking\\Models\\AvailableRoomsToday.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T13:25:05.816Z"
+              "WhenOpened": "2025-06-03T18:11:56.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "App.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\App.axaml.cs",
+              "RelativeDocumentMoniker": "HotelBooking\\App.axaml.cs",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\App.axaml.cs",
+              "RelativeToolTip": "HotelBooking\\App.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T17:45:54.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HotelBooking.csproj",
+              "DocumentMoniker": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\HotelBooking.csproj",
+              "RelativeDocumentMoniker": "HotelBooking\\HotelBooking.csproj",
+              "ToolTip": "C:\\Users\\Bratyakin\\Desktop\\HotelBooking\\HotelBooking\\HotelBooking.csproj",
+              "RelativeToolTip": "HotelBooking\\HotelBooking.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T17:47:16.081Z",
+              "EditorCaption": ""
             }
           ]
         }

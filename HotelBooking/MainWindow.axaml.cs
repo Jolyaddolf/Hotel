@@ -1,3 +1,4 @@
+
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
@@ -7,14 +8,13 @@ using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using HotelBooking.Context;
 using HotelBooking.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace HotelBooking
 {
     public class BookingHistoryViewModel
@@ -40,13 +40,9 @@ namespace HotelBooking
             _context = new User001Context();
             InitializeComponent();
             LoadDataAsync();
-
+            UpdateBookingStatuses();
             var searchBox = this.FindControl<TextBox>("SearchBox");
-            if (searchBox == null)
-            {
-                Console.WriteLine("SearchBox is null. Check if the control is correctly defined in MainWindow.axaml with Name=\"SearchBox\".");
-            }
-            else
+            if (searchBox != null)
             {
                 searchBox.TextChanged += SearchBox_TextChanged;
             }
@@ -59,10 +55,19 @@ namespace HotelBooking
 
         private async void LoadDataAsync()
         {
+            await UpdateBookingStatuses();
             await LoadClients();
             await LoadAvailableRooms();
             await LoadBusyRooms();
             BindControls();
+        }
+
+        private async Task UpdateBookingStatuses()
+        {
+            using (var context = new User001Context())
+            {
+                await context.Database.ExecuteSqlRawAsync("CALL boking.update_booking_status()");
+            }
         }
 
         private void BindControls()
@@ -81,20 +86,12 @@ namespace HotelBooking
 
             using (var context = new User001Context())
             {
-                var allClients = await context.Clients.ToListAsync();
-                Console.WriteLine($"Clients in database: {allClients.Count}");
-                foreach (var client in allClients)
-                {
-                    Console.WriteLine($"Client in DB: FullName={client.FullName}, Phone={client.Phone}, Passport={client.Passport}");
-                }
-
                 var query = context.Clients.AsQueryable();
                 if (!string.IsNullOrEmpty(searchText))
                 {
                     query = query.Where(c => c.FullName.ToLower().Contains(searchText.ToLower()) ||
                                           c.Phone.ToLower().Contains(searchText.ToLower()) ||
                                           c.Passport.ToLower().Contains(searchText.ToLower()));
-                    Console.WriteLine($"Searching for: {searchText}");
                 }
 
                 var clients = await query.ToListAsync();
@@ -103,7 +100,6 @@ namespace HotelBooking
                 {
                     if (_lastSearchText != searchText)
                     {
-                        Console.WriteLine($"Skipping outdated search: {searchText}, latest is {_lastSearchText}");
                         return;
                     }
 
@@ -111,18 +107,6 @@ namespace HotelBooking
                     foreach (var client in clients)
                     {
                         _clients.Add(client);
-                    }
-                    Console.WriteLine($"Loaded {_clients.Count} clients after search");
-                    foreach (var client in _clients)
-                    {
-                        Console.WriteLine($"Client in ListClients: FullName={client.FullName}, Phone={client.Phone}, Passport={client.Passport}");
-                    }
-
-                    var listBox = this.FindControl<ListBox>("ListClients");
-                    if (listBox != null)
-                    {
-                        listBox.ItemsSource = null;
-                        listBox.ItemsSource = _clients;
                     }
                 }
             }
@@ -141,7 +125,6 @@ namespace HotelBooking
                     _availableRooms.Add(room);
                 }
             }
-            Console.WriteLine($"Loaded {_availableRooms.Count} available rooms: {string.Join(", ", _availableRooms.Select(r => r.Number))}");
         }
 
         private async Task LoadBusyRooms(string sort = "CheckoutDate")
@@ -160,10 +143,10 @@ namespace HotelBooking
                         RoomNumber = booking.RoomNumber,
                         CheckoutDate = booking.CheckoutDate,
                         ClientName = booking.ClientName,
-                        Status = booking.Status.ToString(),
+                        Status = (BookingStatus)Enum.Parse(typeof(BookingStatus), booking.Status), 
                         DisplayCheckoutDate = booking.CheckoutDate.HasValue
                             ? booking.CheckoutDate.Value.ToDateTime(TimeOnly.MinValue)
-                            : null
+                            : (DateTime?)null
                     };
                     _busyRooms.Add(viewModel);
                 }
@@ -177,7 +160,6 @@ namespace HotelBooking
             if (searchBox != null)
             {
                 var searchText = searchBox.Text;
-                Console.WriteLine($"Text changed to: {searchText}");
                 await Task.Delay(300);
                 await LoadClients(searchText);
             }
@@ -208,7 +190,7 @@ namespace HotelBooking
                 {
                     Text = client.Email,
                     Name = "Email",
-                    Watermark = "Email (опционально)",
+                    Watermark = "Email",
                     Margin = new Thickness(8),
                     FontSize = 14
                 };
@@ -216,13 +198,13 @@ namespace HotelBooking
                 {
                     Text = client.Passport,
                     Name = "Passport",
-                    Watermark = "Паспорт (опционально)",
+                    Watermark = "Паспорт", 
                     Margin = new Thickness(8),
                     FontSize = 14
                 };
                 var saveButton = new Button
                 {
-                    Content = "Сохранить",
+                    Content = "Save",
                     Name = "SaveButton",
                     Classes = { "success" }
                 };
@@ -248,7 +230,8 @@ namespace HotelBooking
                                 {
                                     Text = "Редактирование клиента",
                                     Classes = { "header" },
-                                    TextAlignment = TextAlignment.Center
+                                    TextAlignment = TextAlignment
+                                    .Center
                                 },
                                 fullNameTextBox,
                                 phoneTextBox,
@@ -256,8 +239,11 @@ namespace HotelBooking
                                 passportTextBox,
                                 new StackPanel
                                 {
-                                    Orientation = Orientation.Horizontal,
-                                    HorizontalAlignment = HorizontalAlignment.Right,
+                                    Orientation = Orientation
+                                    .Horizontal,
+                                    HorizontalAlignment = HorizontalAlignment
+                                    .Right
+                                    ,
                                     Children = { saveButton }
                                 }
                             }
@@ -278,7 +264,7 @@ namespace HotelBooking
                     client.Phone = phone;
                     client.Email = emailTextBox.Text;
                     client.Passport = passportTextBox.Text;
-                    _context.Clients.Update(client);
+                    _context!.Clients.Update(client);
                     await _context.SaveChangesAsync();
                     await LoadClients();
                     await LoadBusyRooms();
@@ -288,11 +274,10 @@ namespace HotelBooking
                 await dialog.ShowDialog(this);
             }
         }
-
         private async void ListBusyRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var deleteButton = this.FindControl<Button>("DeleteBookingButton");
-            deleteButton.IsEnabled = (sender as ListBox)?.SelectedItem != null;
+            deleteButton!.IsEnabled = (sender as ListBox)?.SelectedItem != null;
         }
 
         private async void ListBusyRooms_DoubleTapped(object sender, TappedEventArgs e)
@@ -422,6 +407,7 @@ namespace HotelBooking
                 await LoadBusyRooms();
             });
             dialog.Show();
+
         }
 
         private async void DeleteBookingButton_Click(object sender, RoutedEventArgs e)
@@ -437,13 +423,19 @@ namespace HotelBooking
                 .FirstOrDefaultAsync(b => b.Id == selectedBooking.BookingId.Value);
             if (booking != null)
             {
-                booking.Status = BookingStatus.Canceled;
+                booking.Status = BookingStatus.Canceled.ToString(); // Исправлено: Преобразование BookingStatus в строку
                 _context.Bookings.Update(booking);
                 await _context.SaveChangesAsync();
                 await LoadAvailableRooms();
                 await LoadBusyRooms();
                 Console.WriteLine($"Booking {booking.Id} canceled successfully");
             }
+        }
+
+        private async void GenerateReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new GenerateReportDialog(_context);
+            await dialog.ShowDialog(this);
         }
 
         private async void AddClientButton_Click(object sender, RoutedEventArgs e)
@@ -465,14 +457,14 @@ namespace HotelBooking
             var emailTextBox = new TextBox
             {
                 Name = "Email",
-                Watermark = "Email (опционально)",
+                Watermark = "Email",
                 Margin = new Thickness(8),
                 FontSize = 14
             };
             var passportTextBox = new TextBox
             {
                 Name = "Passport",
-                Watermark = "Паспорт (опционально)",
+                Watermark = "Паспорт",
                 Margin = new Thickness(8),
                 FontSize = 14
             };
@@ -540,7 +532,6 @@ namespace HotelBooking
                 };
                 _context.Clients.Add(client);
                 await _context.SaveChangesAsync();
-                Console.WriteLine($"Added client to DB: FullName={client.FullName}, Phone={client.Phone}, Passport={client.Passport}");
                 await LoadClients();
                 await LoadBusyRooms();
                 dialog.Close();
@@ -558,16 +549,14 @@ namespace HotelBooking
                 return;
             }
 
-            // Проверяем наличие активных бронирований
             var activeBookings = await _context.Bookings
-                .CountAsync(b => b.ClientId == selectedClient.Id && b.Status == BookingStatus.Booked);
+                .CountAsync(b => b.ClientId == selectedClient.Id && b.Status == BookingStatus.Booked.ToString());
             if (activeBookings > 0)
             {
                 await ShowErrorDialog(this, "У клиента есть активные брони!");
                 return;
             }
 
-            // Ищем клиента в базе по Id, чтобы избежать конфликта отслеживания
             var clientToDelete = await _context.Clients
                 .FirstOrDefaultAsync(c => c.Id == selectedClient.Id);
             if (clientToDelete == null)
@@ -578,7 +567,6 @@ namespace HotelBooking
 
             _context.Clients.Remove(clientToDelete);
             await _context.SaveChangesAsync();
-            Console.WriteLine($"Deleted client from DB: FullName={clientToDelete.FullName}, Phone={clientToDelete.Phone}, Passport={clientToDelete.Passport}");
             await LoadClients();
             await LoadBusyRooms();
         }
@@ -650,7 +638,7 @@ namespace HotelBooking
         public string? RoomNumber { get; set; }
         public DateOnly? CheckoutDate { get; set; }
         public string? ClientName { get; set; }
-        public string? Status { get; set; }
+        public BookingStatus Status { get; set; } // Теперь перечисление
         public DateTime? DisplayCheckoutDate { get; set; }
     }
 }

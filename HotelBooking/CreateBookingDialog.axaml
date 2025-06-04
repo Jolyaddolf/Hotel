@@ -2,10 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Width="500" Height="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="HotelBooking.CreateBookingDialog"
         Title="CreateBookingDialog"
 		x:CompileBindings="False">
+	
+	
 	<StackPanel Margin="10" Spacing="10">
 		<TextBlock FontWeight="Bold">Номер:</TextBlock>
 		<ComboBox PlaceholderText="Выберете номер" Name="RoomComboBox">
@@ -30,7 +32,7 @@
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="5">
 			<Button Width="1" Height="1" Name="CalculateButton" Content="Рассчитать стоимость"/>
 			<Button Name="SaveButton" Content="Сохранить"/>
-			<Button Name="GenerateReceiptButton" Content="Сформировать чек" Click="GenerateReceiptButton_Click"/>
+			<Button Name="GenerateReceiptButton" Content="Сформировать чек" Click="Button_Click"/>
 		</StackPanel>
 	</StackPanel>
 </Window>

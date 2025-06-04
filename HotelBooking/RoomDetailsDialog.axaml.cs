@@ -58,9 +58,10 @@ namespace HotelBooking
             _statusText.Text = $"{clientInfo}\n{dateRange}\n{statusInfo}";
 
             // ÷вет статуса (зелЄный дл€ "Booked", красный дл€ других)
-            _statusText.Foreground = busyRoom.Status == "Booked" ?
+            _statusText.Foreground = busyRoom.Status == BookingStatus.Booked ?
                 new SolidColorBrush(Color.Parse("#00a651")) :
                 new SolidColorBrush(Color.Parse("#f66b60"));
+            
         }
 
         private void UpdateAvailableRoomDetails(AvailableRoomsToday availableRoom)

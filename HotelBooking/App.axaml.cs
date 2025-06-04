@@ -10,17 +10,7 @@ namespace HotelBooking
     {
         public override void Initialize()
         {
-            try
-            {
-                Console.WriteLine("Loading XAML for App...");
-                AvaloniaXamlLoader.Load(this);
-                Console.WriteLine("XAML loaded successfully");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"XAML load failed: {ex}");
-                throw;
-            }
+            AvaloniaXamlLoader.Load(this);
         }
 
         public override void OnFrameworkInitializationCompleted()

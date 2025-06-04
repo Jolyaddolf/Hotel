@@ -1,3 +1,4 @@
+
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,12 +8,10 @@
         x:Class="HotelBooking.MainWindow"
         Title="HotelBooking"
         x:CompileBindings="False"
-		Height="800" Width="1400"
-		FontFamily="Segeo UI"
-		>
+        Height="800" Width="1400"
+        FontFamily="Segoe UI">
 
 	<Window.Resources>
-		<!-- Ресурсы цветов -->
 		<SolidColorBrush x:Key="DarkPrimary">#252323</SolidColorBrush>
 		<SolidColorBrush x:Key="PrimaryAccent">#70798C</SolidColorBrush>
 		<SolidColorBrush x:Key="LightBackground">#F5F1ED</SolidColorBrush>
@@ -30,7 +29,6 @@
 	</Window.Resources>
 
 	<Window.Styles>
-		<!-- Оставляем только базовые стили -->
 		<Style Selector="TextBlock">
 			<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
 			<Setter Property="FontSize" Value="14"/>
@@ -43,7 +41,6 @@
 			<Setter Property="Margin" Value="0 0 0 10"/>
 		</Style>
 
-		<!-- Стили кнопок оставляем -->
 		<Style Selector="Button">
 			<Setter Property="Background" Value="{DynamicResource PrimaryAccent}"/>
 			<Setter Property="Foreground" Value="{DynamicResource LightText}"/>
@@ -65,7 +62,6 @@
 			<Setter Property="Background" Value="{DynamicResource DangerColor}"/>
 		</Style>
 
-		<!-- Стили списков оставляем -->
 		<Style Selector="ListBox">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="BorderThickness" Value="0"/>
@@ -81,6 +77,7 @@
 			<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
 		</Style>
 	</Window.Styles>
+
 	<Grid Background="{DynamicResource LightBackground}" Margin="10">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -88,7 +85,6 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
-		<!-- Верхняя панель поиска -->
 		<Border Grid.Row="0"
                 Background="{DynamicResource SecondaryBackground}"
                 CornerRadius="{DynamicResource DefaultCornerRadius}"
@@ -99,22 +95,19 @@
                          MinWidth="250"
                          Margin="{DynamicResource DefaultMargin}"
                          Watermark="Поиск клиента по ФИО или телефону..."
-                        
-						 Background="White"/>
+                         Background="White"/>
 				<Button Name="HistoryButton"
                         HorizontalAlignment="Right"
                         Margin="{DynamicResource DefaultMargin}"
                         Click="HistoryButton_Click"
                         Padding="15 5"
-							Background="#0081c8">
+                        Background="#0081c8">
 					История бронирования
 				</Button>
 			</DockPanel>
 		</Border>
 
-		<!-- Основная область с тремя списками -->
 		<Grid Grid.Row="1" Margin="0,0,0,10" ColumnDefinitions="*,*,*">
-			<!-- Список клиентов -->
 			<Border Grid.Column="0"
                     Background="{DynamicResource LightBackground}"
                     CornerRadius="{DynamicResource DefaultCornerRadius}"
@@ -124,7 +117,6 @@
 				<StackPanel>
 					<TextBlock Text="Клиенты" Classes="header"/>
 
-					<!-- Заголовки столбцов -->
 					<Grid ColumnDefinitions="150,100,80,100" Margin="5,0,5,5">
 						<TextBlock Grid.Column="0" Text="ФИО" FontWeight="Bold"/>
 						<TextBlock Grid.Column="1" Text="Телефон" FontWeight="Bold"/>
@@ -149,7 +141,6 @@
 				</StackPanel>
 			</Border>
 
-			<!-- Список свободных номеров -->
 			<Border Grid.Column="1"
                     Background="{DynamicResource LightBackground}"
                     CornerRadius="{DynamicResource DefaultCornerRadius}"
@@ -159,7 +150,6 @@
 				<StackPanel>
 					<TextBlock Text="Свободные номера" Classes="header"/>
 
-					<!-- Заголовки столбцов -->
 					<Grid ColumnDefinitions="100,100,100,100" Margin="5,0,5,5">
 						<TextBlock Grid.Column="0" Text="Номер" FontWeight="Bold"/>
 						<TextBlock Grid.Column="1" Text="Тип" FontWeight="Bold"/>
@@ -184,7 +174,6 @@
 				</StackPanel>
 			</Border>
 
-			<!-- Список занятых номеров -->
 			<Border Grid.Column="2"
                     Background="{DynamicResource LightBackground}"
                     CornerRadius="{DynamicResource DefaultCornerRadius}"
@@ -194,7 +183,6 @@
 				<StackPanel>
 					<TextBlock Text="Занятые номера" Classes="header"/>
 
-					<!-- Заголовки столбцов -->
 					<Grid ColumnDefinitions="30,120,150,100" Margin="5,0,5,5">
 						<TextBlock Grid.Column="0" Text="№" FontWeight="Bold"/>
 						<TextBlock Grid.Column="1" Text="Выезд" FontWeight="Bold"/>
@@ -222,11 +210,10 @@
 			</Border>
 		</Grid>
 
-		<!-- Нижняя панель управления -->
 		<Border Grid.Row="2"
-        Background="#7a7c7f"
-        CornerRadius="{DynamicResource DefaultCornerRadius}"
-        Padding="10">
+                Background="#7a7c7f"
+                CornerRadius="{DynamicResource DefaultCornerRadius}"
+                Padding="10">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="300"/>
@@ -234,69 +221,73 @@
 					<ColumnDefinition Width="310"/>
 				</Grid.ColumnDefinitions>
 
-				<!-- Левая группа кнопок -->
 				<StackPanel Grid.Column="0"
-						   Orientation="Horizontal"
-						   HorizontalAlignment="Left"
-						   VerticalAlignment="Center"
-						   Spacing="10">
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Spacing="10">
 					<Button Name="AddClientButton"
-							Classes="success"
-							Click="AddClientButton_Click"
-							Padding="15 8">
+                            Classes="success"
+                            Click="AddClientButton_Click"
+                            Padding="15 8">
 						Добавить клиента
 					</Button>
 					<Button Name="DeleteClientButton"
-							Classes="danger"
-							Click="DeleteClientButton_Click"
-							Padding="15 8">
+                            Classes="danger"
+                            Click="DeleteClientButton_Click"
+                            Padding="15 8">
 						Удалить клиента
 					</Button>
 				</StackPanel>
 
-				<!-- Центральный комбобокс -->
 				<ComboBox Grid.Column="1"
-						  Name="SortAvailableRooms"
-						  Width="230"
-						  PlaceholderText="Сортировка по стоимости"
-						  Margin="10"
-						  VerticalAlignment="Center"
-						  MaxDropDownHeight="200"
-						  SelectionChanged="SortAvailableRooms_SelectionChanged">
+                          Name="SortAvailableRooms"
+                          Width="230"
+                          PlaceholderText="Сортировка по стоимости"
+                          Margin="10"
+                          VerticalAlignment="Center"
+                          MaxDropDownHeight="200"
+                          SelectionChanged="SortAvailableRooms_SelectionChanged">
 					<ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
 					<ComboBoxItem>По убыванию стоимости</ComboBoxItem>
 				</ComboBox>
 
-				<!-- Правая группа элементов -->
 				<StackPanel Grid.Column="2"
-						   Orientation="Horizontal"
-						   HorizontalAlignment="Right"
-						   VerticalAlignment="Center"
-						   Spacing="10">
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Spacing="10">
 					<Button Name="CreateBookingButton"
-							Background="#0081c8"
-							Foreground="White"
-							Click="CreateBookingButton_Click"
-							Padding="15 8">
+                            Background="#0081c8"
+                            Foreground="White"
+                            Click="CreateBookingButton_Click"
+                            Padding="15 8">
 						Создать бронирование
 					</Button>
 					<Button Name="DeleteBookingButton"
-							Classes="danger"
-							Click="DeleteBookingButton_Click"
-							Padding="15 8">
+                            Classes="danger"
+                            Click="DeleteBookingButton_Click"
+                            Padding="15 8">
 						Удалить бронь
 					</Button>
-					<ComboBox Name="SortBusyRooms"
-							  Width="290"
-							  PlaceholderText="Сортировка по дате освобождения"
-							  Margin="10"
-							  VerticalAlignment="Center"
-							  MaxDropDownHeight="200"
-							  SelectionChanged="SortBusyRooms_SelectionChanged">
-						<ComboBoxItem>По дате освобождения</ComboBoxItem>
-						<ComboBoxItem>По ФИО клиента</ComboBoxItem>
-					</ComboBox>
-				</StackPanel>
+					<Button Name="GenerateReportButton"
+                            Background="#0081c8"
+                            Foreground="White"
+                            Click="GenerateReportButton_Click"
+                            Padding="15 8">
+						Сформировать отчет
+						</Button>
+						<ComboBox Name="SortBusyRooms"
+								  Width="290"
+								  PlaceholderText="Сортировка по дате освобождения"
+								  Margin="10"
+								  VerticalAlignment="Center"
+								  MaxDropDownHeight="200"
+								  SelectionChanged="SortBusyRooms_SelectionChanged">
+							<ComboBoxItem>По дате освобождения</ComboBoxItem>
+							<ComboBoxItem>По ФИО клиента</ComboBoxItem>
+						</ComboBox>
+					</StackPanel>
 			</Grid>
 		</Border>
 	</Grid>

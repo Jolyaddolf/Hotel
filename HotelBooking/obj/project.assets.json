@@ -370,6 +370,22 @@
           }
         }
       },
+      "DynamicData/9.3.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive": "6.0.1"
+        },
+        "compile": {
+          "lib/net8.0/DynamicData.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/DynamicData.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "HarfBuzzSharp/7.3.0.3": {
         "type": "package",
         "dependencies": {
@@ -1348,7 +1364,7 @@
           }
         }
       },
-      "Microsoft.NETCore.Platforms/1.1.0": {
+      "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -1446,6 +1462,24 @@
         },
         "runtime": {
           "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ReactiveUI/20.3.1": {
+        "type": "package",
+        "dependencies": {
+          "DynamicData": "9.3.2",
+          "Splat": "15.3.1",
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
+        "compile": {
+          "lib/net8.0/ReactiveUI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/ReactiveUI.dll": {
             "related": ".xml"
           }
         }
@@ -1548,6 +1582,19 @@
           }
         }
       },
+      "Splat/15.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Splat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Splat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.ClientModel/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -1595,6 +1642,19 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.ComponentModel.Annotations/5.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/System.ComponentModel.Annotations.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Composition/7.0.0": {
@@ -1856,6 +1916,22 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
+      "System.Reactive/6.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "System.Reflection.Metadata/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -1926,6 +2002,51 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Runtime.WindowsRuntime/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.WindowsRuntime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.WindowsRuntime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Runtime.WindowsRuntime.UI.Xaml/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "System.Runtime.WindowsRuntime": "4.7.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.WindowsRuntime.UI.Xaml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.WindowsRuntime.UI.Xaml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.UI.Xaml.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Security.AccessControl/6.0.0": {
@@ -2641,6 +2762,32 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "DynamicData/9.3.2": {
+      "sha512": "kHzkWG3AbeDeV2fK+wVDiWkenqlfCY+I4BL569j8ufsWBTi7S9exA5m1SGqMqDaKmLPkUXQxtbomqH04W4y0yg==",
+      "type": "package",
+      "path": "dynamicdata/9.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE/LICENSE",
+        "README.md",
+        "dynamicdata.9.3.2.nupkg.sha512",
+        "dynamicdata.nuspec",
+        "lib/net462/DynamicData.dll",
+        "lib/net462/DynamicData.xml",
+        "lib/net6.0/DynamicData.dll",
+        "lib/net6.0/DynamicData.xml",
+        "lib/net7.0/DynamicData.dll",
+        "lib/net7.0/DynamicData.xml",
+        "lib/net8.0/DynamicData.dll",
+        "lib/net8.0/DynamicData.xml",
+        "lib/net9.0/DynamicData.dll",
+        "lib/net9.0/DynamicData.xml",
+        "lib/netstandard2.0/DynamicData.dll",
+        "lib/netstandard2.0/DynamicData.xml",
+        "logo.png"
       ]
     },
     "HarfBuzzSharp/7.3.0.3": {
@@ -4612,19 +4759,21 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+    "Microsoft.NETCore.Platforms/3.1.0": {
+      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/1.1.0",
+      "path": "microsoft.netcore.platforms/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
-        "runtime.json"
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "Microsoft.NETCore.Targets/1.1.0": {
@@ -4736,6 +4885,58 @@
         "npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
         "npgsql.entityframeworkcore.postgresql.nuspec",
         "postgresql.png"
+      ]
+    },
+    "ReactiveUI/20.3.1": {
+      "sha512": "ROcVtXY3zaE/fISQdRnJyAF6K7p1OWx9RugiiP996UbaUv3V+P4lHya5gGiIBYXgg1ZPFJ+rKfLerYLRinBW6g==",
+      "type": "package",
+      "path": "reactiveui/20.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE/LICENSE",
+        "README.md",
+        "lib/net462/ReactiveUI.dll",
+        "lib/net462/ReactiveUI.xml",
+        "lib/net472/ReactiveUI.dll",
+        "lib/net472/ReactiveUI.xml",
+        "lib/net8.0-android34.0/ReactiveUI.dll",
+        "lib/net8.0-android34.0/ReactiveUI.xml",
+        "lib/net8.0-ios18.0/ReactiveUI.dll",
+        "lib/net8.0-ios18.0/ReactiveUI.xml",
+        "lib/net8.0-maccatalyst18.0/ReactiveUI.dll",
+        "lib/net8.0-maccatalyst18.0/ReactiveUI.xml",
+        "lib/net8.0-macos15.0/ReactiveUI.dll",
+        "lib/net8.0-macos15.0/ReactiveUI.xml",
+        "lib/net8.0-tvos18.0/ReactiveUI.dll",
+        "lib/net8.0-tvos18.0/ReactiveUI.xml",
+        "lib/net8.0-windows10.0.17763/ReactiveUI.dll",
+        "lib/net8.0-windows10.0.17763/ReactiveUI.xml",
+        "lib/net8.0-windows10.0.19041/ReactiveUI.dll",
+        "lib/net8.0-windows10.0.19041/ReactiveUI.xml",
+        "lib/net8.0/ReactiveUI.dll",
+        "lib/net8.0/ReactiveUI.xml",
+        "lib/net9.0-android35.0/ReactiveUI.dll",
+        "lib/net9.0-android35.0/ReactiveUI.xml",
+        "lib/net9.0-ios18.0/ReactiveUI.dll",
+        "lib/net9.0-ios18.0/ReactiveUI.xml",
+        "lib/net9.0-maccatalyst18.0/ReactiveUI.dll",
+        "lib/net9.0-maccatalyst18.0/ReactiveUI.xml",
+        "lib/net9.0-macos15.0/ReactiveUI.dll",
+        "lib/net9.0-macos15.0/ReactiveUI.xml",
+        "lib/net9.0-tvos18.0/ReactiveUI.dll",
+        "lib/net9.0-tvos18.0/ReactiveUI.xml",
+        "lib/net9.0-windows10.0.17763/ReactiveUI.dll",
+        "lib/net9.0-windows10.0.17763/ReactiveUI.xml",
+        "lib/net9.0-windows10.0.19041/ReactiveUI.dll",
+        "lib/net9.0-windows10.0.19041/ReactiveUI.xml",
+        "lib/net9.0/ReactiveUI.dll",
+        "lib/net9.0/ReactiveUI.xml",
+        "lib/netstandard2.0/ReactiveUI.dll",
+        "lib/netstandard2.0/ReactiveUI.xml",
+        "logo.png",
+        "reactiveui.20.3.1.nupkg.sha512",
+        "reactiveui.nuspec"
       ]
     },
     "SkiaSharp/2.88.9": {
@@ -4916,6 +5117,26 @@
         "skiasharp.nativeassets.win32.nuspec"
       ]
     },
+    "Splat/15.3.1": {
+      "sha512": "zyu98Mwp8gTi3MlS6EGtvcacmw5W/qA4/h/DVeZ28A1dR6mcM628ujHck6LK5SM6LwroR5LzBonWgeFtwo2Afg==",
+      "type": "package",
+      "path": "splat/15.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE/LICENSE",
+        "README.md",
+        "lib/net8.0/Splat.dll",
+        "lib/net8.0/Splat.xml",
+        "lib/net9.0/Splat.dll",
+        "lib/net9.0/Splat.xml",
+        "lib/netstandard2.0/Splat.dll",
+        "lib/netstandard2.0/Splat.xml",
+        "logo.png",
+        "splat.15.3.1.nupkg.sha512",
+        "splat.nuspec"
+      ]
+    },
     "System.ClientModel/1.0.0": {
       "sha512": "I3CVkvxeqFYjIVEP59DnjbeoGNfo/+SZrCLpRz2v/g0gpCHaEMPtWSY0s9k/7jR1rAsLNg2z2u1JRB76tPjnIw==",
       "type": "package",
@@ -4983,6 +5204,96 @@
         "system.collections.immutable.7.0.0.nupkg.sha512",
         "system.collections.immutable.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.ComponentModel.Annotations/5.0.0": {
+      "sha512": "dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "type": "package",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net461/System.ComponentModel.Annotations.dll",
+        "lib/netcore50/System.ComponentModel.Annotations.dll",
+        "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.xml",
+        "lib/portable-net45+win8/_._",
+        "lib/win8/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net461/System.ComponentModel.Annotations.dll",
+        "ref/net461/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/System.ComponentModel.Annotations.dll",
+        "ref/netcore50/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/de/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/es/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/fr/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/it/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ja/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ko/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.xml",
+        "ref/portable-net45+win8/_._",
+        "ref/win8/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.annotations.5.0.0.nupkg.sha512",
+        "system.componentmodel.annotations.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Composition/7.0.0": {
@@ -5400,6 +5711,34 @@
         "version.txt"
       ]
     },
+    "System.Reactive/6.0.1": {
+      "sha512": "rHaWtKDwCi9qJ3ObKo8LHPMuuwv33YbmQi7TcUK1C264V3MFnOr5Im7QgCTdLniztP3GJyeiSg5x8NqYJFqRmg==",
+      "type": "package",
+      "path": "system.reactive/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net6.0-windows10.0.19041/_._",
+        "build/net6.0/_._",
+        "buildTransitive/net6.0-windows10.0.19041/_._",
+        "buildTransitive/net6.0/_._",
+        "icon.png",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net6.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net6.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net6.0/System.Reactive.dll",
+        "lib/net6.0/System.Reactive.xml",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.18362/System.Reactive.dll",
+        "lib/uap10.0.18362/System.Reactive.pri",
+        "lib/uap10.0.18362/System.Reactive.xml",
+        "readme.md",
+        "system.reactive.6.0.1.nupkg.sha512",
+        "system.reactive.nuspec"
+      ]
+    },
     "System.Reflection.Metadata/7.0.0": {
       "sha512": "MclTG61lsD9sYdpNz9xsKBzjsmsfCtcMZYXz/IUr2zlhaTaABonlr1ESeompTgM+Xk+IwtGYU7/voh3YWB/fWw==",
       "type": "package",
@@ -5580,6 +5919,146 @@
         "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Runtime.WindowsRuntime/4.7.0": {
+      "sha512": "RQxUkf37fp7MSWbOfKRjUjyudyfZb2u79YY5i1s+d7vuD80A7kmr2YfefO0JprQUhanxSm8bhXigCVfX2kEh+w==",
+      "type": "package",
+      "path": "system.runtime.windowsruntime/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/net45/System.Runtime.WindowsRuntime.targets",
+        "build/net451/System.Runtime.WindowsRuntime.targets",
+        "build/net461/System.Runtime.WindowsRuntime.targets",
+        "buildTransitive/net45/System.Runtime.WindowsRuntime.targets",
+        "buildTransitive/net451/System.Runtime.WindowsRuntime.targets",
+        "buildTransitive/net461/System.Runtime.WindowsRuntime.targets",
+        "lib/net45/_._",
+        "lib/netstandard1.0/System.Runtime.WindowsRuntime.dll",
+        "lib/netstandard1.0/System.Runtime.WindowsRuntime.xml",
+        "lib/netstandard1.2/System.Runtime.WindowsRuntime.dll",
+        "lib/netstandard1.2/System.Runtime.WindowsRuntime.xml",
+        "lib/netstandard2.0/System.Runtime.WindowsRuntime.dll",
+        "lib/netstandard2.0/System.Runtime.WindowsRuntime.xml",
+        "lib/portable-win8+wp8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Runtime.WindowsRuntime.dll",
+        "ref/netcore50/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/de/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/es/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/fr/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/it/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/ja/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/ko/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/ru/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/zh-hans/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/zh-hant/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/System.Runtime.WindowsRuntime.dll",
+        "ref/netstandard1.0/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/de/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/es/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/fr/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/it/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/ja/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/ko/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/ru/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/System.Runtime.WindowsRuntime.dll",
+        "ref/netstandard1.2/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/de/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/es/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/fr/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/it/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/ja/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/ko/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/ru/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/zh-hans/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/zh-hant/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard2.0/System.Runtime.WindowsRuntime.dll",
+        "ref/netstandard2.0/System.Runtime.WindowsRuntime.xml",
+        "ref/portable-win8+wp8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "runtimes/win-aot/lib/netcore50/System.Runtime.WindowsRuntime.dll",
+        "runtimes/win-aot/lib/uap10.0.16299/_._",
+        "runtimes/win/lib/netcore50/System.Runtime.WindowsRuntime.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.xml",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.runtime.windowsruntime.4.7.0.nupkg.sha512",
+        "system.runtime.windowsruntime.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.WindowsRuntime.UI.Xaml/4.7.0": {
+      "sha512": "6KDuUX4XfIJJyhvhYb40wZLHAXcKsObonUsvPzbmFh6VOQ9b/4zoUR33+VrzQo85+DGDI1RF9K4icQBD2sNRnw==",
+      "type": "package",
+      "path": "system.runtime.windowsruntime.ui.xaml/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/net45/System.Runtime.WindowsRuntime.UI.Xaml.targets",
+        "build/net461/System.Runtime.WindowsRuntime.UI.Xaml.targets",
+        "lib/net45/_._",
+        "lib/netstandard1.1/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "lib/netstandard1.1/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "lib/netstandard2.0/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "lib/netstandard2.0/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "lib/portable-win8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wpa81/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "ref/netcore50/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/de/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/es/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/fr/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/it/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/ja/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/ko/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/ru/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/zh-hans/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netcore50/zh-hant/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "ref/netstandard1.1/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/de/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/es/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/fr/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/it/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/ja/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/ko/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/ru/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/zh-hans/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard1.1/zh-hant/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/netstandard2.0/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "ref/netstandard2.0/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "ref/portable-win8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wpa81/_._",
+        "runtimes/win-aot/lib/uap10.0.16299/_._",
+        "runtimes/win/lib/netcore50/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.UI.Xaml.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.UI.Xaml.xml",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.runtime.windowsruntime.ui.xaml.4.7.0.nupkg.sha512",
+        "system.runtime.windowsruntime.ui.xaml.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Security.AccessControl/6.0.0": {
@@ -6137,7 +6616,9 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.5",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
+      "ReactiveUI >= 20.3.1",
+      "System.Runtime.WindowsRuntime.UI.Xaml >= 4.7.0"
     ]
   },
   "packageFolders": {
@@ -6234,6 +6715,14 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[9.0.4, )"
+          },
+          "ReactiveUI": {
+            "target": "Package",
+            "version": "[20.3.1, )"
+          },
+          "System.Runtime.WindowsRuntime.UI.Xaml": {
+            "target": "Package",
+            "version": "[4.7.0, )"
           }
         },
         "imports": [
